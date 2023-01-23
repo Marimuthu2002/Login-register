@@ -25,7 +25,7 @@
                         <label for="LastName" class="form-label">Last Name</label>
                         <input type="text" class="form-control" id="LastName" name="LastName"
                             [(ngModel)]="userData.LastName" #LastName="ngModel"
-                            pattern="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
+                            pattern="^(?=.{1,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
                             placeholder="M">
                         <div class="form-control-feedback text-danger"
                             *ngIf="LastName.errors && (LastName.dirty || LastName.touched)">
