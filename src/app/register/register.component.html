@@ -1,0 +1,96 @@
+<div class="hole">
+    <div class="first">
+        <form (ngSubmit)="onSubmit(formdemo, userData)" #formdemo="ngForm">
+            <div class="p-5 second">
+                <div class="mb-3">
+                    <h3>
+                        Sign up
+                    </h3>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="FirstName" class="form-label">First Name</label>
+                        <input type="email" class="form-control" id="FirstName" name="FirstName"
+                            [(ngModel)]="userData.FirstName"
+                            pattern="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" placeholder="John Due"
+                            #FirstName="ngModel" required>
+                        <div class="form-control-feedback text-danger"
+                            *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched)">
+                            <p class="m-0" *ngIf="FirstName.errors['required']">First Name is Required</p>
+                            <p class="m-0" *ngIf="FirstName.errors['pattern']">
+                                Please enter Valid First Name </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="LastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="LastName" name="LastName"
+                            [(ngModel)]="userData.LastName" #LastName="ngModel"
+                            pattern="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
+                            placeholder="M">
+                        <div class="form-control-feedback text-danger"
+                            *ngIf="LastName.errors && (LastName.dirty || LastName.touched)">
+                            <p class="m-0" *ngIf="LastName.errors['required']">Last Name is Required</p>
+                            <p class="m-0" *ngIf="LastName.errors['pattern']">
+                                Please enter Valid Last Name </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userData.email"
+                            placeholder="name@example.com" #email="ngModel"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        <div class="form-control-feedback text-danger"
+                            *ngIf="email.errors && (email.dirty || email.touched)">
+                            <p class="m-0" *ngIf="email.errors['required']">Email is Required</p>
+                            <p class="m-0" *ngIf="email.errors['pattern']">
+                                Please enter Valid Email </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="DateOfBirth" class="form-label">Date Of Birth</label>
+                        <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth"
+                            [(ngModel)]="userData.DateOfBirth" #DateOfBirth="ngModel" required placeholder="10-08-2002">
+                        <span class="help-block text-danger" *ngIf="!DateOfBirth.valid && DateOfBirth.touched">Please
+                            enter
+                            a Date Of Birth!</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="phonenumber" class="form-label">Phone Number</label>
+                        <input type="phonenumber" class="form-control" id="phonenumber" name="phonenumber"
+                            [(ngModel)]="userData.phonenumber" placeholder="1234567890"
+                            pattern="^((\\+91-?)|0)?[0-9]{10}$" #phonenumber="ngModel" required>
+                        <div class="form-control-feedback text-danger"
+                            *ngIf="phonenumber.errors && (phonenumber.dirty || phonenumber.touched)">
+                            <p class="m-0" *ngIf="phonenumber.errors['required']">phone number is Required</p>
+                            <p class="m-0" *ngIf="phonenumber.errors['pattern']">
+                                Please enter Valid phone number </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="password" class="form-label"> Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            [(ngModel)]="userData.password" #password="ngModel"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30}" required placeholder="password@123">
+                        <div class="form-control-feedback text-danger"
+                            *ngIf="password.errors && (password.dirty || password.touched)">
+                            <p class="m-0" *ngIf="password.errors['required']"> Password is Required</p>
+                            <p class="m-0" *ngIf="password.errors['pattern']">
+                                Please enter Valid Password </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="!formdemo.valid" class="btn px-3">Sign up</button>
+                </div>
+                <div class="text-center mt-2">
+                    <p class="m-0">Already Have an Account?</p>
+                    <a href="/login">Sign in</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
